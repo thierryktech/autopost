@@ -1,0 +1,27 @@
+/*
+ * Authenticated media proxy. The browser never receives Drive tokens: thumbnails and video bytes are
+ * streamed through the server (HTTP Range supported for scrubbing on iPad/Safari).
+ */
+import { getSessionUser } from "@/server/auth";
+import { driveAdapter } from "@/server/adapters";
+import { AdapterError } from "@/server/adapters/types";
+
+export const dynamic = "force-dynamic";
+
+export async function GET(req: Request, ctx: { params: Promise<{ kind: string; fileId: string }> }) {
+  if (!(await getSessionUser())) return new Response("Unauthorized", { status: 401 });
+  const { kind, fileId } = await ctx.params;
+  if (!/^[\w-]{1,200}$/.test(fileId)) return new Response("Bad file id", { status: 400 });
+  const drive = driveAdapter();
+  try {
+    if (kind === "thumb") return await drive.fetchThumbnail(fileId);
+    if (kind === "stream") return await drive.fetchContent(fileId, req.headers.get("range"));
+    return new Response("Not found", { status: 404 });
+  } catch (e) {
+    if (e instanceof AdapterError) {
+      const status = e.code === "not_found" ? 404 : e.code === "permission_denied" ? 403 : e.code === "auth_expired" || e.code === "not_configured" ? 409 : 502;
+      return new Response(e.message, { status });
+    }
+    throw e;
+  }
+}

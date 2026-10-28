@@ -1,0 +1,124 @@
+@import "tailwindcss";
+
+/*
+ * Balena Reel Studio design tokens.
+ * Muted teal navigation, white panels, warm peach accents, soft gradients used sparingly.
+ */
+@theme {
+  --font-sans: var(--font-jakarta), var(--font-thai), ui-sans-serif, system-ui, sans-serif;
+  --font-thai: var(--font-thai), var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+
+  --color-teal-950: #182f32;
+  --color-teal-900: #1f3a3d;
+  --color-teal-850: #24444a;
+  --color-teal-800: #2a4a4e;
+  --color-teal-700: #2f5257;
+  --color-teal-600: #3d6a70;
+  --color-teal-500: #5a878c;
+  --color-teal-300: #a9c4c5;
+  --color-teal-200: #cfe0e0;
+  --color-teal-100: #e3eeee;
+  --color-teal-50: #f1f6f6;
+
+  --color-peach-700: #b8643a;
+  --color-peach-600: #d9844f;
+  --color-peach-500: #e9a57a;
+  --color-peach-300: #f3c9a8;
+  --color-peach-200: #f8dcc7;
+  --color-peach-100: #fbe8da;
+  --color-peach-50: #fdf4ee;
+
+  --color-cream: #fbf8f4;
+  --color-ink-900: #1b2627;
+  --color-ink-700: #364547;
+  --color-ink-600: #55676a;
+  --color-ink-500: #6f8285;
+  --color-ink-400: #8d9ea0;
+  --color-line: #e4eaea;
+  --color-line-strong: #cfd9d9;
+
+  --color-success-700: #22684b;
+  --color-success-100: #e2f2ea;
+  --color-warning-700: #8f5b0f;
+  --color-warning-100: #fbefd6;
+  --color-danger-700: #a23b31;
+  --color-danger-100: #fbe4e1;
+  --color-info-700: #275f7a;
+  --color-info-100: #e2eff5;
+
+  --radius-card: 20px;
+  --radius-panel: 28px;
+  --radius-control: 12px;
+
+  --shadow-card: 0 1px 2px rgb(16 40 42 / 0.04), 0 8px 24px rgb(16 40 42 / 0.06);
+  --shadow-raised: 0 2px 4px rgb(16 40 42 / 0.06), 0 16px 40px rgb(16 40 42 / 0.12);
+  --shadow-focus: 0 0 0 3px rgb(233 165 122 / 0.55);
+
+  --breakpoint-xs: 420px;
+}
+
+:root {
+  --gradient-primary: linear-gradient(135deg, #2f5257 0%, #3f767b 100%);
+  --gradient-peach: linear-gradient(135deg, #fde9da 0%, #f6cdae 100%);
+  --gradient-hero: linear-gradient(120deg, #dbe9e8 0%, #eef2ee 45%, #f8e5d6 100%);
+  --gradient-progress: linear-gradient(90deg, #e9a57a 0%, #f3c9a8 100%);
+  --app-bg: #2b4a4e;
+  color-scheme: light;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  background: var(--app-bg);
+}
+
+body {
+  background: var(--app-bg);
+  color: var(--color-ink-900);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100dvh;
+}
+
+:lang(th),
+.font-thai {
+  font-family: var(--font-thai);
+  line-height: 1.65;
+}
+
+/* Visible, consistent focus ring for keyboard users. */
+:where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-peach-600);
+  outline-offset: 2px;
+  border-radius: 10px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Safe areas for iPad / iPhone (home indicator, rounded corners). */
+.safe-pt { padding-top: max(env(safe-area-inset-top), 0px); }
+.safe-pb { padding-bottom: max(env(safe-area-inset-bottom), 0px); }
+.safe-pl { padding-left: max(env(safe-area-inset-left), 0px); }
+.safe-pr { padding-right: max(env(safe-area-inset-right), 0px); }
+
+/* Keep focused fields clear of the on-screen keyboard and sticky bars. */
+input, textarea, select { scroll-margin-block: 120px; }
+
+.bg-gradient-primary { background-image: var(--gradient-primary); }
+.bg-gradient-peach { background-image: var(--gradient-peach); }
+.bg-gradient-hero { background-image: var(--gradient-hero); }
+.bg-gradient-progress { background-image: var(--gradient-progress); }
+
+.scrollbar-thin { scrollbar-width: thin; }
+
+@keyframes shimmer {
+  100% { transform: translateX(100%); }
+}

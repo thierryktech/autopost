@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { Readable } from "node:stream";
 import { env } from "../../env";
 import { AdapterError, type DriveAdapter, type DriveItem, type DriveListing } from "../types";
 import { DEMO_CATALOG, DEMO_ROOT_ID, DEMO_OUTPUT_FOLDER_ID, type DemoNode } from "./demo-catalog";
@@ -92,8 +93,8 @@ async function fileResponse(file: string, contentType: string, range: string | n
       const start = m[1] ? Number(m[1]) : Math.max(0, size - Number(m[2]));
       const end = m[1] && m[2] ? Math.min(Number(m[2]), size - 1) : size - 1;
       if (start >= size) return new Response(null, { status: 416, headers: { "Content-Range": `bytes */${size}` } });
-      const stream = fs.createReadStream(file, { start, end });
-      return new Response(stream as unknown as ReadableStream, {
+      const stream = Readable.toWeb(fs.createReadStream(file, { start, end })) as ReadableStream;
+      return new Response(stream, {
         status: 206,
         headers: {
           "Content-Type": contentType,
@@ -104,8 +105,8 @@ async function fileResponse(file: string, contentType: string, range: string | n
       });
     }
   }
-  const stream = fs.createReadStream(file);
-  return new Response(stream as unknown as ReadableStream, {
+  const stream = Readable.toWeb(fs.createReadStream(file)) as ReadableStream;
+  return new Response(stream, {
     headers: { "Content-Type": contentType, "Content-Length": String(size), "Accept-Ranges": "bytes" },
   });
 }

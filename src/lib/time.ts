@@ -10,7 +10,8 @@ export const DEFAULT_TZ = "Asia/Bangkok";
 export function tzOffsetLabel(tz: string, at: Date = new Date()): string {
   const parts = new Intl.DateTimeFormat("en-US", { timeZone: tz, timeZoneName: "shortOffset" }).formatToParts(at);
   const off = parts.find((p) => p.type === "timeZoneName")?.value ?? "";
-  return off.replace("GMT", "GMT");
+  // Node and browsers disagree on UTC+0 ("GMT" vs "GMT+0"); normalise to avoid hydration mismatches.
+  return off === "GMT" || off === "UTC" ? "GMT+0" : off;
 }
 
 export function tzLabel(tz: string, at: Date = new Date()): string {

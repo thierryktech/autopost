@@ -36,12 +36,8 @@ export function isApprovalValid(state: ApprovalState, current: ApprovableContent
   return state.approvedContentHash === contentHash(current);
 }
 
-export type ApprovalBlocker =
-  | "no_render"
-  | "render_not_ready"
-  | "not_approved"
-  | "approval_stale"
-  | "empty_caption";
+import type { ApprovalBlocker } from "./approval-labels";
+export { BLOCKER_LABEL, type ApprovalBlocker } from "./approval-labels";
 
 export function approvalBlockers(input: {
   state: ApprovalState;
@@ -56,11 +52,3 @@ export function approvalBlockers(input: {
   else if (!isApprovalValid(input.state, input.current)) out.push("approval_stale");
   return out;
 }
-
-export const BLOCKER_LABEL: Record<ApprovalBlocker, string> = {
-  no_render: "No rendered video yet",
-  render_not_ready: "Latest render is not finished",
-  not_approved: "Draft has not been approved",
-  approval_stale: "Video, caption or product changed after approval — approve again",
-  empty_caption: "Thai caption is empty",
-};

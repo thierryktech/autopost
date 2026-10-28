@@ -9,6 +9,8 @@ export interface OAuthTokens {
   expiresAt?: number | null; // epoch ms
   /** Facebook: long-lived Page access token for the selected Page. */
   pageAccessToken?: string | null;
+  /** Facebook: all Pages the user shared, so the Page can be switched without logging in again. */
+  pages?: { id: string; name: string; token: string }[];
 }
 
 export async function getConnection(provider: ConnectionProvider): Promise<Connection | null> {
