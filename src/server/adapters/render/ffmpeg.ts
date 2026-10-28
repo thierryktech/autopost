@@ -78,7 +78,7 @@ export class FfmpegRenderAdapter implements RenderAdapter {
     fs.writeFileSync(assPath, buildAss(input.snapshot.subtitles, input.snapshot.subtitleStyle, W, H), "utf8");
     const { args, durationMs } = buildFfmpegArgs(input, assPath);
     await new Promise<void>((resolve, reject) => {
-      const proc = spawn(this.ffmpegPath, args, { stdio: ["ignore", "pipe", "pipe"] });
+      const proc = spawn(/*turbopackIgnore: true*/ this.ffmpegPath, args, { stdio: ["ignore", "pipe", "pipe"] });
       let stderr = "";
       proc.stdout.on("data", (buf: Buffer) => {
         const m = /out_time_(?:ms|us)=(\d+)/.exec(buf.toString());

@@ -6,7 +6,7 @@ import { asc, eq } from "drizzle-orm";
 import { getDb } from "../../db/connect";
 import { brandKit, clipEdits, footage, products, projects } from "../../db/schema";
 import { claudeAdapter, driveAdapter, ffmpegAvailable } from "../../adapters";
-import { saveDraft } from "../../services/projects";
+import { saveDraft, ConflictError } from "../../services/projects";
 import { logActivity } from "../../services/activity";
 import type { JobHandler } from "../types";
 
@@ -20,7 +20,7 @@ async function keyframes(driveFileId: string, durationMs: number): Promise<Buffe
     const out: Buffer[] = [];
     for (const frac of [0.25, 0.7]) {
       const jpg = path.join(dir, `${frac}.jpg`);
-      spawnSync("ffmpeg", ["-y", "-ss", String((durationMs * frac) / 1000), "-i", src, "-frames:v", "1", "-vf", "scale=384:-2", "-q:v", "5", jpg], { stdio: "ignore" });
+      spawnSync(/*turbopackIgnore: true*/ "ffmpeg", ["-y", "-ss", String((durationMs * frac) / 1000), "-i", src, "-frames:v", "1", "-vf", "scale=384:-2", "-q:v", "5", jpg], { stdio: "ignore" });
       if (fs.existsSync(jpg)) out.push(fs.readFileSync(jpg));
     }
     return out;
@@ -59,11 +59,19 @@ export const claudeDraftHandler: JobHandler = async (job) => {
     product: product ? { name: product.name, nameTh: product.nameTh, verifiedFacts: product.verifiedFacts, type: product.type } : null,
     brand: { toneOfVoice: kit?.toneOfVoice ?? "", defaultCtas: kit?.defaultCtas ?? [], prohibitedClaims: kit?.prohibitedClaims ?? [] },
   });
-  await saveDraft(projectId, p.version, {
-    clips: draft.clips,
-    subtitles: draft.subtitles,
-    captionTh: draft.captionTh,
-  });
+  // The user asked for this draft to replace the edit, so apply it on top of the latest version
+  // (they may have changed stage or saved while Claude was working). Devices with unsaved edits
+  // will see a "changed on another device" prompt rather than losing work silently.
+  for (let attempt = 0; ; attempt++) {
+    const [fresh] = await db.select({ version: projects.version }).from(projects).where(eq(projects.id, projectId));
+    if (!fresh) return { kind: "done", result: { skipped: "deleted" } };
+    try {
+      await saveDraft(projectId, fresh.version, { clips: draft.clips, subtitles: draft.subtitles, captionTh: draft.captionTh });
+      break;
+    } catch (e) {
+      if (!(e instanceof ConflictError) || attempt >= 3) throw e;
+    }
+  }
   const note =
     draft.generatedBy === "claude"
       ? `Drafted by Claude (${draft.model}). ${draft.rationale}`

@@ -11,7 +11,7 @@ import { ffmpegAvailable } from "./adapters";
 
 function run(args: string[]): Promise<void> {
   return new Promise((resolve, reject) => {
-    const p = spawn(process.env.FFMPEG_PATH ?? "ffmpeg", ["-hide_banner", "-loglevel", "error", "-y", ...args], { stdio: ["ignore", "ignore", "pipe"] });
+    const p = spawn(/*turbopackIgnore: true*/ process.env.FFMPEG_PATH ?? "ffmpeg", ["-hide_banner", "-loglevel", "error", "-y", ...args], { stdio: ["ignore", "ignore", "pipe"] });
     let err = "";
     p.stderr.on("data", (b) => (err += b.toString()));
     p.on("close", (code) => (code === 0 ? resolve() : reject(new Error(err.slice(-500)))));

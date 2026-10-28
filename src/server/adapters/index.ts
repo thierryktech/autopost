@@ -34,7 +34,7 @@ export function facebookAdapter(): FacebookAdapter {
 
 export function ffmpegAvailable(): boolean {
   try {
-    return spawnSync(process.env.FFMPEG_PATH ?? "ffmpeg", ["-version"], { stdio: "ignore" }).status === 0;
+    return spawnSync(/*turbopackIgnore: true*/ process.env.FFMPEG_PATH ?? "ffmpeg", ["-version"], { stdio: "ignore" }).status === 0;
   } catch {
     return false;
   }

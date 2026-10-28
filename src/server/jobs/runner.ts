@@ -119,18 +119,22 @@ export function startRunner(opts: { mode: "embedded" | "external"; concurrency?:
   for (let i = 0; i < concurrency; i++) {
     loops.push(
       (async () => {
+        // Back off while idle (2s → 8s) to keep database load low on serverless Postgres.
+        let idleMs = pollMs;
         while (!stopped) {
           try {
             if (i === 0) await tick();
             const job = await claimNextJob(workerId);
             if (job) {
               await runJob(job);
+              idleMs = pollMs;
               continue;
             }
           } catch (e) {
             console.error("[worker] loop error", e);
           }
-          await new Promise((r) => setTimeout(r, pollMs));
+          await new Promise((r) => setTimeout(r, idleMs));
+          idleMs = Math.min(8_000, Math.round(idleMs * 1.5));
         }
       })(),
     );

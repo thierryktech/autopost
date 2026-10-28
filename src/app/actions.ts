@@ -31,8 +31,8 @@ async function run<T>(fn: () => Promise<T>): Promise<ActionResult<T>> {
     return { ok: true, data };
   } catch (e) {
     if (e instanceof projects.ConflictError) return { ok: false, error: e.message, conflict: { currentVersion: e.currentVersion } };
-    if (e instanceof ValidationError || e instanceof z.ZodError || e instanceof AdapterError) {
-      return { ok: false, error: e instanceof z.ZodError ? e.issues.map((i) => i.message).join("; ") : e.message };
+    if (e instanceof ValidationError || e instanceof z.ZodError || e instanceof AdapterError || ["AdapterError", "ValidationError"].includes((e as Error)?.name)) {
+      return { ok: false, error: e instanceof z.ZodError ? e.issues.map((i) => i.message).join("; ") : (e as Error).message };
     }
     console.error(e);
     return { ok: false, error: (e as Error).message === "Not signed in" ? "Your session expired. Please sign in again." : "Something went wrong. Please try again." };

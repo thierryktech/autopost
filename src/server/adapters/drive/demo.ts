@@ -7,7 +7,7 @@ import { DEMO_CATALOG, DEMO_ROOT_ID, DEMO_OUTPUT_FOLDER_ID, type DemoNode } from
 
 /** DEMO adapter: serves the local fake Drive tree. Never talks to Google. */
 export function demoDir() {
-  return path.resolve(env.dataDir, "demo-drive");
+  return path.resolve(/*turbopackIgnore: true*/ env.dataDir, "demo-drive");
 }
 export function demoFilePath(id: string) {
   const node = DEMO_CATALOG.find((n) => n.id === id);

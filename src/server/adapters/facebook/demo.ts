@@ -26,7 +26,7 @@ interface DemoVideo {
 const PUBLISH_DELAY_MS = Number(process.env.DEMO_FB_PUBLISH_DELAY_MS ?? 8000);
 
 function stateFile() {
-  return path.resolve(env.dataDir, "demo-facebook.json");
+  return path.resolve(/*turbopackIgnore: true*/ env.dataDir, "demo-facebook.json");
 }
 
 export class DemoFacebookAdapter implements FacebookAdapter {

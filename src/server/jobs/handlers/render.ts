@@ -87,7 +87,7 @@ export const renderHandler: JobHandler = async (job) => {
       outputDriveFileId = uploaded.id;
       if (drive.mode === "demo") {
         const thumb = demoUploadThumbPath(uploaded.id);
-        spawnSync(process.env.FFMPEG_PATH ?? "ffmpeg", ["-y", "-ss", "1", "-i", outPath, "-frames:v", "1", "-vf", "scale=360:-2", thumb], { stdio: "ignore" });
+        spawnSync(/*turbopackIgnore: true*/ process.env.FFMPEG_PATH ?? "ffmpeg", ["-y", "-ss", "1", "-i", outPath, "-frames:v", "1", "-vf", "scale=360:-2", thumb], { stdio: "ignore" });
       }
       outputFootageId = newId("ftg");
       await db.insert(footage).values({

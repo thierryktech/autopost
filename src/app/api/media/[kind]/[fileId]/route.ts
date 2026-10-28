@@ -18,9 +18,11 @@ export async function GET(req: Request, ctx: { params: Promise<{ kind: string; f
     if (kind === "stream") return await drive.fetchContent(fileId, req.headers.get("range"));
     return new Response("Not found", { status: 404 });
   } catch (e) {
-    if (e instanceof AdapterError) {
-      const status = e.code === "not_found" ? 404 : e.code === "permission_denied" ? 403 : e.code === "auth_expired" || e.code === "not_configured" ? 409 : 502;
-      return new Response(e.message, { status });
+    // Name check (not instanceof): the class can be loaded in more than one server bundle.
+    if (e instanceof AdapterError || (e as Error)?.name === "AdapterError") {
+      const err = e as AdapterError;
+      const status = err.code === "not_found" ? 404 : err.code === "permission_denied" ? 403 : err.code === "auth_expired" || err.code === "not_configured" ? 409 : 502;
+      return new Response(err.message, { status });
     }
     throw e;
   }

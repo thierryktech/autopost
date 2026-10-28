@@ -31,6 +31,7 @@ async function connect(): Promise<Db> {
     const postgres = (await import("postgres")).default;
     const client = postgres(process.env.DATABASE_URL!, {
       max: Number(process.env.DATABASE_POOL_SIZE ?? 5),
+      onnotice: () => {},
       prepare: false, // compatible with transaction-mode poolers (Supabase/Neon)
     });
     const db = drizzle(client, { schema });
@@ -44,7 +45,7 @@ async function connect(): Promise<Db> {
   const { drizzle } = await import("drizzle-orm/pglite");
   const { migrate } = await import("drizzle-orm/pglite/migrator");
   const raw = process.env.DATABASE_URL?.replace(/^pglite:/, "");
-  const dir = raw === "memory" ? undefined : path.resolve(raw || ".data/pglite");
+  const dir = raw === "memory" ? undefined : path.resolve(/*turbopackIgnore: true*/ raw || ".data/pglite");
   if (dir) fs.mkdirSync(dir, { recursive: true });
   const client = new PGlite(dir);
   const db = drizzle(client, { schema });
