@@ -3,6 +3,9 @@ from pathlib import Path
 import unittest
 from datetime import datetime, timezone
 from unittest.mock import Mock
+from unittest.mock import patch
+import io
+import urllib.error
 
 spec = importlib.util.spec_from_file_location('publisher', Path(__file__).parents[1]/'scripts/publish.py')
 p = importlib.util.module_from_spec(spec); spec.loader.exec_module(p)
@@ -14,6 +17,15 @@ def example(**kwargs):
     post.update(kwargs); return post
 
 class PublisherTests(unittest.TestCase):
+    def test_meta_error_does_not_disclose_token(self):
+        payload=b'{"error":{"message":"secret-value","code":190,"error_subcode":463}}'
+        error=urllib.error.HTTPError('https://graph.facebook.com/v27.0/me',401,'Unauthorized',{},io.BytesIO(payload))
+        with patch.object(p.urllib.request,'urlopen',side_effect=error):
+            with self.assertRaises(RuntimeError) as result:
+                p.api('GET','https://graph.facebook.com/v27.0/me?fields=id','secret-value')
+        self.assertIn('code=190',str(result.exception))
+        self.assertIn('/v27.0/me',str(result.exception))
+        self.assertNotIn('secret-value',str(result.exception))
     def test_bangkok_due_and_unapproved(self):
         now=datetime(2026,11,13,7,0,tzinfo=timezone.utc)
         self.assertEqual(len(p.due_posts([example()],now)),1)
