@@ -22,7 +22,18 @@ def api(method, url, token, data=None):
         with urllib.request.urlopen(req, timeout=60) as response:
             result = json.load(response)
     except urllib.error.HTTPError as exc:
-        raise RuntimeError(f'API request rejected (HTTP {exc.code}); inspect permissions and account settings.') from None
+        # Only log numeric diagnostic fields, never Meta's message or token.
+        detail = ''
+        try:
+            error = json.load(exc).get('error', {})
+            for field in ('code', 'error_subcode'):
+                value = error.get(field)
+                if isinstance(value, int):
+                    detail += f' {field}={value}'
+        except (ValueError, AttributeError):
+            pass
+        path = urllib.parse.urlsplit(url).path
+        raise RuntimeError(f'Meta request {method} {path} rejected (HTTP {exc.code}{detail}). Check the saved Page token and permissions.') from None
     except (urllib.error.URLError, TimeoutError):
         raise RuntimeError('API connection failed; a publishing result may be uncertain. Check the account before retrying.') from None
     if 'error' in result:
