@@ -1,0 +1,25 @@
+{
+  "id": "ai-tools-comparison-20261114-0800",
+  "approved": true,
+  "status": "scheduled",
+  "scheduled_at": "2026-11-14T08:00:00+07:00",
+  "platforms": [
+    "facebook",
+    "instagram"
+  ],
+  "caption": "Claude, ChatGPT หรือ Grok… ใช้ตัวไหนดี?\n\nเห็นคนแนะนำกันคนละตัว จนเริ่มสงสัยว่าเราต้องสมัครให้ครบเลยไหม ถึงจะทำงานทันคนอื่น\n\nลองเริ่มจากงานที่อยู่ตรงหน้าก่อนก็ได้ครับ\n\nสมมติเรามีร้านกาแฟเล็ก ๆ กำลังจะเปิดตัวสินค้าใหม่ งานที่ต้องทำมีทั้งอ่านบรีฟ ดูยอดขาย เขียนโพสต์ ทำภาพ และหาว่าช่วงนี้คนกำลังสนใจอะไร\n\nคำถามที่ช่วยเลือกได้มากกว่าคือ “งานนี้ต้องใช้เครื่องมืออะไร และเราอยากได้ผลลัพธ์แบบไหน?”\n\nในคารูเซลนี้ เลยหยิบตัวอย่างมาให้เห็นภาพ ทั้งการใช้ Claude ต่อบรีฟเป็นชิ้นงาน ใช้ ChatGPT ทำงานกับตารางและภาพ หรือใช้ Grok สำรวจประเด็นจากเว็บและ X\n\nแต่ไม่ได้แปลว่าแต่ละตัวทำได้แค่งานนั้นนะ หลายอย่างทำได้คล้ายกัน และตัวอย่างในโพสต์นี้ก็ไม่ใช่ผลทดสอบจัดอันดับว่าใครชนะ\n\nถ้าอยากรู้ว่าตัวไหนเหมาะกับเรา ลองเอางานที่ทำบ่อยมา 1 ชิ้น ให้ข้อมูลเหมือนกัน แล้วขอผลลัพธ์แบบเดียวกันดู\n\nจากนั้นค่อยถามตัวเองว่า…\n\nข้อมูลถูกไหม?\nต้องแก้เยอะแค่ไหน?\nใช้งานแล้วสะดวกหรือเปล่า?\nช่วยให้งานดีขึ้นจริงไหม?\n\nบางทีตัวที่คนอื่นชอบที่สุด อาจไม่ใช่ตัวที่เข้ากับวิธีทำงานของเราที่สุดก็ได้\n\nก่อนจ่ายเงิน อย่าลืมเช็กฟีเจอร์และโควตาของบัญชีตัวเองด้วย ส่วนใครจะเชื่อมระบบอัตโนมัติ ให้ดูเงื่อนไข API แยกอีกครั้ง อย่าเพิ่งคิดว่าค่าสมาชิกแชตรวมทุกอย่างแล้ว\n\nเลื่อนดูทั้ง 7 ภาพ แล้วลองใช้พรอมต์ในภาพสุดท้ายกับงานของคุณ เริ่มจากเครื่องมือที่เข้าถึงได้ก่อน ยังไม่ต้องสมัครครบทั้งสามก็ได้ครับ\n\nตอนนี้คุณใช้ AI ตัวไหน และให้ช่วยงานอะไรบ่อยที่สุด?\n\nข้อมูลฟีเจอร์ตรวจสอบวันที่ 13 พฤศจิกายน 2569 ความพร้อมใช้งานอาจต่างกันตามแผน ประเทศ และการตั้งค่า\n\n#BalenaStudio #Claude #ChatGPT #Grok #ใช้AIให้เป็น #เรียนรู้AI",
+  "images": [
+    "https://raw.githubusercontent.com/thierryktech/autopost/main/posts/ai-tools-comparison/01.jpg",
+    "https://raw.githubusercontent.com/thierryktech/autopost/main/posts/ai-tools-comparison/02.jpg",
+    "https://raw.githubusercontent.com/thierryktech/autopost/main/posts/ai-tools-comparison/03.jpg",
+    "https://raw.githubusercontent.com/thierryktech/autopost/main/posts/ai-tools-comparison/04.jpg",
+    "https://raw.githubusercontent.com/thierryktech/autopost/main/posts/ai-tools-comparison/05.jpg",
+    "https://raw.githubusercontent.com/thierryktech/autopost/main/posts/ai-tools-comparison/06.jpg",
+    "https://raw.githubusercontent.com/thierryktech/autopost/main/posts/ai-tools-comparison/07.jpg"
+  ],
+  "targets": {
+    "facebook_page_id": "1333518183169362",
+    "instagram_account_id": "17841429807921077"
+  },
+  "notes": "User approved scheduling the finished seven-slide carousel and latest casual Thai caption for 14 November 2026 at 08:00 Asia/Bangkok. GitHub Actions cron is best-effort; no early publishing."
+}

@@ -9,6 +9,7 @@ on:
         default: dry-run
   schedule:
     - cron: '17 * * * *'
+    - cron: '0 1 * * *' # 08:00 Asia/Bangkok, plus hourly fallback
 permissions:
   contents: write
 concurrency:
