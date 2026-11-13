@@ -16,7 +16,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   publish:
-    if: github.event_name == 'workflow_dispatch' || vars.AUTO_POST_ENABLED == 'true'
+    if: github.event_name == 'workflow_dispatch' || vars.AUTO_POST_ENABLED != 'false'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -33,6 +33,6 @@ jobs:
           FB_PAGE_ID: '1333518183169362'
           IG_ACCOUNT_ID: '17841429807921077'
           META_GRAPH_VERSION: 'v27.0'
-          AUTO_POST_ENABLED: ${{ vars.AUTO_POST_ENABLED }}
+          AUTO_POST_ENABLED: ${{ vars.AUTO_POST_ENABLED || 'true' }}
           GITHUB_TOKEN: ${{ github.token }}
         run: python scripts/publish.py --mode "$MODE"
