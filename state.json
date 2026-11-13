@@ -15,7 +15,11 @@
     "published_at": "2026-11-13T07:35:10.810895+00:00"
   },
   "claude-projects-001:facebook": {
-    "status": "publishing",
-    "started_at": "2026-11-13T11:33:51.185655+00:00"
+    "status": "published",
+    "receipt": {
+      "id": "1333518183169362_122124639729458852",
+      "post_supports_client_mutation_id": true
+    },
+    "published_at": "2026-11-13T11:34:03.399446+00:00"
   }
 }
