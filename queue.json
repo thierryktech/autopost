@@ -48,5 +48,30 @@
       "instagram_account_id": "17841429807921077"
     },
     "notes": "User approved scheduling the finished seven-slide carousel and latest casual Thai caption for 14 November 2026 at 08:00 Asia/Bangkok. GitHub Actions cron is best-effort; no early publishing."
+  },
+  {
+    "id": "claude-projects-001",
+    "status": "approved",
+    "approved": true,
+    "scheduled_at": "2026-11-13T11:32:48.983Z",
+    "platforms": [
+      "facebook",
+      "instagram"
+    ],
+    "caption": "เช้าให้ Claude ช่วยเขียนโพสต์ขายกาแฟ\nบ่ายให้ช่วยทำคอนเทนต์สอน AI\nแล้วเราควรแยกงานพวกนี้ยังไงดี?\n\nถ้ามีหลายงานที่ต้องกลับมาทำเรื่อย ๆ ลองจัดเป็น Projects ดูครับ\n\nนึกภาพว่าแต่ละ Project เป็นพื้นที่ทำงานหนึ่งชุด มีทั้งไฟล์อ้างอิง แนวทางให้ Claude ตอบ และแชตที่เกี่ยวข้อง ช่วยให้เราเลือกบริบทให้ตรงกับงานได้ง่ายขึ้น\n\nอย่างงานร้านกาแฟ อาจมีข้อมูลสินค้า วิธีชง กลุ่มลูกค้า และแนวทางการขาย พร้อมคำสั่งว่า…\n\n“ช่วยงานร้านกาแฟโดยยึดข้อมูลสินค้าที่ให้ ถ้าไม่มีราคา หรือโปรโมชัน ให้ถามก่อน อย่าแต่งขึ้นเอง”\n\nส่วนงานช่องคอนเทนต์ ก็แยกอีก Project เก็บกลุ่มคนดู ตัวอย่างโพสต์ และกติกาของช่อง เช่น…\n\n“ช่วยทำสื่อสอน AI สำหรับมือใหม่ ใช้ภาษาไทยเข้าใจง่าย ยกตัวอย่างงานจริง และบอกเมื่อข้อมูลยังไม่แน่ใจ”\n\nแล้วต้องสร้าง Project ใหม่ทุกโพสต์ไหม?\n\nไม่จำเป็นครับ ถ้ายังใช้ข้อมูลหลักและแนวทางเดียวกัน ก็แยกเป็นแชตย่อยใน Project เดิมได้ เช่น แชตเขียนโพสต์สินค้า กับแชตตอบคำถามลูกค้า\n\nลองใช้เกณฑ์ง่าย ๆ ว่า เป้าหมายต่างไหม ข้อมูลที่ต้องใช้ต่างไหม และน้ำเสียงต่างกันหรือเปล่า ถ้าต่างกันมาก การแยก Project ก็ช่วยให้จัดงานง่ายขึ้น\n\nแต่มีจุดที่ควรจำไว้ด้วยนะครับ\n\nตั้งชื่อ Project อย่างเดียว ยังไม่พอจะอธิบายงานทั้งหมดให้ Claude เข้าใจ ควรใส่บริบทในคำสั่งหรือไฟล์อ้างอิงด้วย และอย่าคาดว่าแชตใหม่จะรู้ทุกอย่างจากแชตเก่า\n\nข้อมูลเปลี่ยนก็ต้องอัปเดต เช่น ราคาสินค้าใหม่ หรือกติกาช่องที่เปลี่ยนไป รวมถึงตรวจการตั้งค่า Memory และสิทธิ์แชร์ให้เหมาะกับงานด้วย\n\nวันนี้ลองเลือกงานสองชุดที่ทำบ่อย แล้วแยก Project พร้อมใส่ไฟล์หลักกับแนวทางตอบสั้น ๆ ก่อนก็ได้ ไม่ต้องจัดทุกอย่างให้สมบูรณ์ตั้งแต่วันแรก\n\nเลื่อนดูทั้ง 7 ภาพ แล้วคัดลอกข้อความในภาพสุดท้ายไปลองใช้ได้เลยครับ\n\nถ้าเป็นคุณ จะแยก Project งานอะไรเป็นอย่างแรก?\n\n#BalenaStudio #Claude #ClaudeProjects #ใช้AIให้เป็น #จัดระเบียบงาน",
+    "images": [
+      "https://raw.githubusercontent.com/thierryktech/autopost/main/posts/claude-projects/01.jpg",
+      "https://raw.githubusercontent.com/thierryktech/autopost/main/posts/claude-projects/02.jpg",
+      "https://raw.githubusercontent.com/thierryktech/autopost/main/posts/claude-projects/03.jpg",
+      "https://raw.githubusercontent.com/thierryktech/autopost/main/posts/claude-projects/04.jpg",
+      "https://raw.githubusercontent.com/thierryktech/autopost/main/posts/claude-projects/05.jpg",
+      "https://raw.githubusercontent.com/thierryktech/autopost/main/posts/claude-projects/06.jpg",
+      "https://raw.githubusercontent.com/thierryktech/autopost/main/posts/claude-projects/07.jpg"
+    ],
+    "targets": {
+      "facebook_page_id": "1333518183169362",
+      "instagram_account_id": "17841429807921077"
+    },
+    "notes": "User requested removing the หมายเหตุ paragraph from the latest approved caption and immediate publication to both connected accounts. Seven images unchanged."
   }
 ]

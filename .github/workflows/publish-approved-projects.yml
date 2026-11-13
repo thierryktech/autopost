@@ -1,0 +1,59 @@
+name: Publish approved Claude Projects carousel
+on:
+  push:
+    branches: [main]
+    paths: ['requests/claude-projects-001.json']
+permissions:
+  contents: write
+concurrency:
+  group: balena-publisher
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run tests and validate approved queue
+        run: |
+          python -m unittest discover -s tests -v
+          python scripts/publish.py --mode dry-run
+      - name: Publish approved carousel
+        env:
+          META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
+          FB_PAGE_ID: '1333518183169362'
+          IG_ACCOUNT_ID: '17841429807921077'
+          META_GRAPH_VERSION: 'v27.0'
+          AUTO_POST_ENABLED: 'true'
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python scripts/publish.py --mode live
+      - name: Report published links
+        if: always()
+        env:
+          META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
+          META_GRAPH_VERSION: 'v27.0'
+        run: |
+          python - <<'PY'
+          import json, os, sys
+          from pathlib import Path
+          sys.path.insert(0, 'scripts')
+          from publish import graph
+          state = json.loads(Path('state.json').read_text())
+          for platform, field in [('facebook', 'permalink_url'), ('instagram', 'permalink')]:
+              entry = state.get('claude-projects-001:' + platform, {})
+              if entry.get('status') != 'published':
+                  print(platform + ': ' + entry.get('status', 'not published'))
+                  continue
+              media_id = entry['receipt']['id']
+              try:
+                  result = graph(media_id + '?fields=' + field, os.environ['META_PAGE_TOKEN'])
+                  link = result.get(field, '')
+                  print(platform + ' published link: ' + link)
+                  with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as output:
+                      output.write(platform + ': ' + link + '\n\n')
+              except Exception:
+                  print(platform + ' published; permalink lookup unavailable. ID: ' + media_id)
+          PY
