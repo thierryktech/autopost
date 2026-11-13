@@ -6,5 +6,9 @@
       "post_supports_client_mutation_id": true
     },
     "published_at": "2026-11-13T07:33:36.884722+00:00"
+  },
+  "claude-beginner-001:instagram": {
+    "status": "publishing",
+    "started_at": "2026-11-13T07:33:38.102762+00:00"
   }
 }
