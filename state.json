@@ -1,6 +1,10 @@
 {
   "claude-beginner-001:facebook": {
-    "status": "publishing",
-    "started_at": "2026-11-13T07:33:26.627251+00:00"
+    "status": "published",
+    "receipt": {
+      "id": "1333518183169362_122124587343458852",
+      "post_supports_client_mutation_id": true
+    },
+    "published_at": "2026-11-13T07:33:36.884722+00:00"
   }
 }
