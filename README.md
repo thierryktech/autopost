@@ -1,6 +1,6 @@
 # Balena Studio Publisher
 
-Scheduled Facebook multi-photo and Instagram carousel publishing using GitHub Actions. The queue starts empty and automatic posting starts disabled.
+Scheduled Facebook multi-photo and Instagram carousel publishing using GitHub Actions. Automatic publishing is enabled by default. Only approved, due posts are eligible; published post IDs are skipped using state.json.
 
 ## 1. Add the secret
 
@@ -41,14 +41,13 @@ Use a new permanent ID for each post. Add all seven images in order. Replace the
 
 Set `approved` to `true` only after reviewing content, image order, account and time. ISO timestamps must include a timezone; `+07:00` is Bangkok. A missed schedule remains due and can publish on the next run.
 
-## 4. Enable publishing
+## 4. Automatic publishing and pause switch
 
-Settings → Secrets and variables → Actions → Variables → New repository variable:
+Automatic publishing was enabled at the user's request after the first Facebook and Instagram carousel published successfully. If `AUTO_POST_ENABLED` is unset, it defaults to `true` in the workflow.
 
-- Name: `AUTO_POST_ENABLED`
-- Value: `true`
+To pause publishing: Settings → Secrets and variables → Actions → Variables, create or edit the repository variable `AUTO_POST_ENABLED` and set it to `false`. Set it to `true` to resume. This gate also applies to manual live mode in Balena Publisher.
 
-Before enabling, inspect the entire queue: every approved post with a past timestamp is eligible. Manual mode `live` also requires this variable. Turn it off by setting it to `false`.
+Review the entire queue before resuming: every approved post with a past timestamp is eligible. Keep `approved: false` for drafts. Previously reserved or published post IDs remain skipped.
 
 The workflow checks due posts hourly at minute 17 UTC (also minute 17 in Bangkok). This is a queue check, not a guarantee of exact posting time. GitHub may delay scheduled runs and disables schedules in public repos after 60 days without repository activity. Scheduled workflows run on the default branch. No post is made unless it is both approved and due.
 
@@ -77,4 +76,4 @@ Primary documentation:
 - https://developers.facebook.com/docs/graph-api/reference/photo/
 - https://developers.facebook.com/docs/instagram-platform/instagram-api-with-facebook-login/content-publishing/
 
-No live publishing has been tested during setup. Add the secret, run the connection check, then review the first queue item.
+The first seven-slide Claude beginner carousel was published successfully to both configured accounts on 2026-11-13. Receipts are recorded in state.json. Scheduled queue processing is enabled; future content still requires approval.
