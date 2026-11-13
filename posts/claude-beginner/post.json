@@ -1,0 +1,25 @@
+{
+  "id": "claude-beginner-001",
+  "status": "ready_for_review",
+  "approved": false,
+  "scheduled_at": null,
+  "platforms": [
+    "facebook",
+    "instagram"
+  ],
+  "caption": "Claude ทำอะไรให้เราได้บ้าง นอกจากตอบคำถาม?\n\nเคยไหม มีทั้งโน้ต ข้อมูลสินค้า และไอเดียเต็มไปหมด แต่พอจะเริ่มทำงานกลับไม่รู้จะเริ่มตรงไหน\n\nลองให้ Claude ช่วยจัดกลุ่มข้อมูล สรุปเป้าหมาย และเสนอแผนเริ่มต้น จากนั้นค่อยถามต่อและปรับให้เข้ากับงานของเรา\n\nในคารูเซลนี้ มีตัวอย่างสำหรับมือใหม่ ตั้งแต่การอ่านเรื่องยากให้ง่ายขึ้น ร่างข้อความให้ตรงกับผู้อ่าน ไปจนถึงเปรียบเทียบทางเลือกและวางแผนลงมือทำ\n\nเคล็ดลับคือบอกให้ชัดว่า กำลังทำงานอะไร ทำเพื่อใคร และอยากได้ผลลัพธ์แบบไหน ร่างแรกยังไม่ตรง ก็ขอให้ปรับต่อได้\n\nอย่าลืมตรวจข้อเท็จจริงกับต้นฉบับ ปกปิดข้อมูลส่วนตัว และตรวจงานก่อนนำไปใช้ การเข้าถึงแอปหรือข้อมูลอื่นขึ้นอยู่กับเครื่องมือและสิทธิ์ที่อนุญาต\n\nเวลาที่ใช้ในภาพเปรียบเทียบเป็นเพียงตัวอย่างสมมติ เวลาจริงขึ้นอยู่กับงาน เครื่องมือ และประสบการณ์ของแต่ละคน\n\nวันนี้ลองเลือกงานเล็ก ๆ ที่ค้างอยู่ แล้วใช้แนวทางในภาพสุดท้าย: บอกงาน เป้าหมาย และข้อมูลที่มี จากนั้นให้ Claude ช่วยจัดกลุ่มและเสนอแผนเริ่มต้น 3 ขั้น พร้อมบอกว่าข้อมูลอะไรยังขาด\n\n#BalenaStudio #Claude #Claudeสำหรับมือใหม่ #ใช้AIให้เป็น #เรียนรู้AI",
+  "images": [
+    "https://raw.githubusercontent.com/thierryktech/autopost/main/posts/claude-beginner/01.jpg",
+    "https://raw.githubusercontent.com/thierryktech/autopost/main/posts/claude-beginner/02.jpg",
+    "https://raw.githubusercontent.com/thierryktech/autopost/main/posts/claude-beginner/03.jpg",
+    "https://raw.githubusercontent.com/thierryktech/autopost/main/posts/claude-beginner/04.jpg",
+    "https://raw.githubusercontent.com/thierryktech/autopost/main/posts/claude-beginner/05.jpg",
+    "https://raw.githubusercontent.com/thierryktech/autopost/main/posts/claude-beginner/06.jpg",
+    "https://raw.githubusercontent.com/thierryktech/autopost/main/posts/claude-beginner/07.jpg"
+  ],
+  "targets": {
+    "facebook_page_id": "1333518183169362",
+    "instagram_account_id": "17841429807921077"
+  },
+  "notes": "Draft only. Choose scheduled_at with timezone and approve before copying this post into queue.json. Publishing remains disabled."
+}
