@@ -13,5 +13,9 @@
       "id": "18348838129248072"
     },
     "published_at": "2026-11-13T07:35:10.810895+00:00"
+  },
+  "claude-projects-001:facebook": {
+    "status": "publishing",
+    "started_at": "2026-11-13T11:33:51.185655+00:00"
   }
 }
