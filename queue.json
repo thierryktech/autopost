@@ -1,1 +1,27 @@
-[]
+[
+  {
+    "id": "claude-beginner-001",
+    "status": "approved",
+    "approved": true,
+    "scheduled_at": "2026-11-13T07:32:21.154Z",
+    "platforms": [
+      "facebook",
+      "instagram"
+    ],
+    "caption": "เปิดคอมแล้ว แต่ยังไม่รู้จะเริ่มงานตรงไหน…\nโน้ตก็กระจัดกระจาย ไอเดียก็มีเต็มหัว งานก็รออยู่เหมือนเดิม\n\nลองให้ Claude ช่วยจัดความคิดดูก่อนไหม?\n\nหลายคนใช้ Claude แค่ถามแล้วรอคำตอบ แต่เราชวนมันมาช่วยทำงานระหว่างทางได้ด้วย ทั้งอ่านเรื่องยาก ร่างข้อความ เปรียบเทียบทางเลือก หรือแตกงานใหญ่ให้เป็นขั้นตอนเล็ก ๆ\n\nเช่น ถ้ามีข้อมูลสินค้าอยู่หลายหน้า ลองให้ช่วยจัดกลุ่มว่าอะไรคือจุดเด่น ลูกค้ามักสงสัยเรื่องไหน และควรเริ่มเล่าจากอะไร\n\nถ้าร่างโพสต์ออกมาแล้วรู้สึกว่า “ยังไม่ใช่” ก็สั่งแก้ต่อได้เลย เช่น\n“ขอภาษาง่ายกว่านี้ เขียนให้คนเพิ่งเริ่มทำร้านกาแฟอ่าน แล้วปิดท้ายด้วยสิ่งที่ลองทำได้วันนี้”\n\nยิ่งบอกบริบทชัด ก็ยิ่งมีแนวทางให้ปรับคำตอบเข้ากับงานของเรา\n\nแต่ก่อนเอาไปใช้ อย่าลืมตรวจข้อมูล อ่านทวน และตัดสินใจด้วยตัวเองด้วยนะ คำตอบที่ดูมั่นใจอาจผิดได้ และไม่ควรใส่รหัสผ่านหรือข้อมูลส่วนตัวที่ละเอียดอ่อนลงไป\n\nเลื่อนดูทั้ง 7 ภาพ แล้วลองหยิบงานเล็ก ๆ ที่ค้างอยู่มาสักชิ้น เริ่มด้วยประโยคนี้ได้เลย:\n\n“ฉันกำลังทำ [งาน] เพื่อ [เป้าหมาย]\nข้อมูลที่มีคือ [วางโน้ต]\nช่วยจัดกลุ่ม เสนอแผนเริ่มต้น 3 ขั้น และบอกว่าข้อมูลอะไรยังขาด”\n\nไม่ต้องคิดคำสั่งให้เป๊ะตั้งแต่ครั้งแรก ลองคุย ถามต่อ แล้วค่อยปรับไปด้วยกัน\n\nวันนี้คุณอยากให้ Claude ช่วยงานชิ้นไหนก่อน?\n\n#BalenaStudio #Claude #Claudeสำหรับมือใหม่ #ใช้AIให้เป็น #เรียนรู้AI",
+    "images": [
+      "https://raw.githubusercontent.com/thierryktech/autopost/main/posts/claude-beginner/01.jpg",
+      "https://raw.githubusercontent.com/thierryktech/autopost/main/posts/claude-beginner/02.jpg",
+      "https://raw.githubusercontent.com/thierryktech/autopost/main/posts/claude-beginner/03.jpg",
+      "https://raw.githubusercontent.com/thierryktech/autopost/main/posts/claude-beginner/04.jpg",
+      "https://raw.githubusercontent.com/thierryktech/autopost/main/posts/claude-beginner/05.jpg",
+      "https://raw.githubusercontent.com/thierryktech/autopost/main/posts/claude-beginner/06.jpg",
+      "https://raw.githubusercontent.com/thierryktech/autopost/main/posts/claude-beginner/07.jpg"
+    ],
+    "targets": {
+      "facebook_page_id": "1333518183169362",
+      "instagram_account_id": "17841429807921077"
+    },
+    "notes": "User explicitly approved immediate publication to Facebook and Instagram in chat. One-time request; recurring scheduling remains disabled."
+  }
+]
