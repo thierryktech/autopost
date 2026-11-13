@@ -1,0 +1,38 @@
+name: Balena Publisher
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: dry-run validates queue; check reads accounts; live publishes approved due posts
+        type: choice
+        options: [dry-run, check, live]
+        default: dry-run
+  schedule:
+    - cron: '17 * * * *'
+permissions:
+  contents: write
+concurrency:
+  group: balena-publisher
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: github.event_name == 'workflow_dispatch' || vars.AUTO_POST_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run tests
+        run: python -m unittest discover -s tests -v
+      - name: Run publisher
+        env:
+          MODE: ${{ inputs.mode || 'live' }}
+          META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
+          FB_PAGE_ID: '1333518183169362'
+          IG_ACCOUNT_ID: '17841429807921077'
+          META_GRAPH_VERSION: 'v27.0'
+          AUTO_POST_ENABLED: ${{ vars.AUTO_POST_ENABLED }}
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python scripts/publish.py --mode "$MODE"
