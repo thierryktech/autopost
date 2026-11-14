@@ -30,7 +30,11 @@
     "published_at": "2026-11-13T11:35:41.923179+00:00"
   },
   "ai-tools-comparison-20261114-0800:facebook": {
-    "status": "publishing",
-    "started_at": "2026-11-14T01:11:05.608096+00:00"
+    "status": "published",
+    "receipt": {
+      "id": "1333518183169362_122124736125458852",
+      "post_supports_client_mutation_id": true
+    },
+    "published_at": "2026-11-14T01:11:18.301860+00:00"
   }
 }
